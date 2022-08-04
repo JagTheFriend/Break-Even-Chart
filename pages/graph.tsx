@@ -7,8 +7,9 @@ export default function BreakEvenGraph() {
   const [totalRevenue, setTotalRevenue] = useState(189_000);
   const [totalCost, setTotalCost] = useState(114_000);
   const [totalUnitsSold, setTotalUnitsSold] = useState(36_000);
+  const [labels, setLabels] = useState(createLabels(totalUnitsSold));
   const data = {
-    labels: createLabels(),
+    labels: labels,
     datasets: [
       {
         label: "Fixed costs",
@@ -19,14 +20,14 @@ export default function BreakEvenGraph() {
       },
       {
         label: "Total costs",
-        data: getCostData(totalCost, totalUnitsSold, fixedCost),
+        data: getCostData(totalCost, totalUnitsSold, fixedCost, labels),
         fill: false,
         borderColor: "rgb(227, 81, 18)",
         tension: 0.1,
       },
       {
         label: "Total Revenue",
-        data: getRevData(totalRevenue, totalUnitsSold),
+        data: getRevData(totalRevenue, totalUnitsSold, labels),
         fill: false,
         borderColor: "rgb(25, 18, 227)",
         tension: 0.1,
@@ -70,7 +71,7 @@ export default function BreakEvenGraph() {
         type="number"
         name="totalCost"
         id="totalCostInput"
-        placeholder="15,000"
+        placeholder="36,000"
         onChange={(data) => setTotalUnitsSold(parseInt(data.target.value))}
       />
       <Line data={data} options={options} />
