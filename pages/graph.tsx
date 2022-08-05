@@ -36,6 +36,38 @@ export default function BreakEvenGraph() {
   };
   const options = {
     maintainAspectRatio: true,
+    responsive: true,
+    plugins: {
+      title: {
+        display: true,
+        text: "Break-Even Chart",
+        font: {
+          size: 18,
+        },
+      },
+    },
+    scales: {
+      y: {
+        display: true,
+        title: {
+          display: true,
+          text: "Money",
+          font: {
+            size: 16,
+          },
+        },
+      },
+      x: {
+        display: true,
+        title: {
+          display: true,
+          text: "Output in units",
+          font: {
+            size: 16,
+          },
+        },
+      },
+    },
   };
   return (
     <div>
