@@ -72,7 +72,10 @@ export default function BreakEvenGraph() {
         name="totalCost"
         id="totalCostInput"
         placeholder="36,000"
-        onChange={(data) => setTotalUnitsSold(parseInt(data.target.value))}
+        onChange={(data) => {
+          setTotalUnitsSold(parseInt(data.target.value));
+          setLabels(createLabels(parseInt(data.target.value)));
+        }}
       />
       <Line data={data} options={options} />
     </div>
