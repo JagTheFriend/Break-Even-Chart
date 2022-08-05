@@ -7,6 +7,8 @@ export function getXAxis(totalUnitsSold: number): number {
     var unitsSold_ = totalUnitsSold.toString().replace(allZero, "");
     if (unitsSold_.length === 1) {
       unitsSold = parseInt(`${unitsSold_}0`);
+    } else {
+      unitsSold = parseInt(unitsSold_);
     }
   }
   return Math.ceil(unitsSold / 5) + 1;
@@ -18,7 +20,9 @@ export function labelIncrement(
   totalCost: number,
   totalUnitsSold: number
 ): number {
-  return Math.max(fixedCost, totalRevenue, totalCost, totalUnitsSold);
+  return Math.ceil(
+    Math.max(fixedCost, totalRevenue, totalCost, totalUnitsSold) / 5
+  );
 }
 
 export function createLabels(

@@ -80,8 +80,8 @@ export default function BreakEvenGraph() {
             createLabels(
               fixedCost,
               totalRevenue,
-              totalCost,
-              parseInt(data.target.value)
+              parseInt(data.target.value),
+              totalUnitsSold
             )
           );
         }}
