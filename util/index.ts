@@ -12,10 +12,26 @@ export function getXAxis(totalUnitsSold: number): number {
   return Math.ceil(unitsSold / 5) + 1;
 }
 
-export function createLabels(totalUnitsSold: number): number[] {
+export function highestNumber(
+  fixedCost: number,
+  totalRevenue: number,
+  totalCost: number,
+  totalUnitsSold: number
+): number {
+  return Math.max(fixedCost, totalRevenue, totalCost, totalUnitsSold);
+}
+
+export function createLabels(
+  fixedCost: number,
+  totalRevenue: number,
+  totalCost: number,
+  totalUnitsSold: number
+): number[] {
   const labels: number[] = [];
   for (var i = 0; i < getXAxis(totalUnitsSold); i++) {
-    labels.push(5_000 * i);
+    labels.push(
+      highestNumber(fixedCost, totalRevenue, totalCost, totalUnitsSold) * i
+    );
   }
   return labels;
 }
