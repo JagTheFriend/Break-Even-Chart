@@ -15,27 +15,21 @@ export function getXAxis(totalUnitsSold: number): number {
 }
 
 export function labelIncrement(
-  fixedCost: number,
   totalRevenue: number,
   totalCost: number,
   totalUnitsSold: number
 ): number {
-  return Math.ceil(
-    Math.max(fixedCost, totalRevenue, totalCost, totalUnitsSold) / 5
-  );
+  return Math.ceil(Math.max(totalRevenue, totalCost, totalUnitsSold) / 5);
 }
 
 export function createLabels(
-  fixedCost: number,
   totalRevenue: number,
   totalCost: number,
   totalUnitsSold: number
 ): number[] {
   const labels: number[] = [];
   for (var i = 0; i < getXAxis(totalUnitsSold); i++) {
-    labels.push(
-      labelIncrement(fixedCost, totalRevenue, totalCost, totalUnitsSold) * i
-    );
+    labels.push(labelIncrement(totalRevenue, totalCost, totalUnitsSold) * i);
   }
   return labels;
 }
