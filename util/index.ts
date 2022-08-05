@@ -4,7 +4,10 @@ export function getXAxis(totalUnitsSold: number): number {
   var unitsSold = 0;
   if (isThereZero && isThereZero[0].length !== 1) {
     const allZero = new Array(isThereZero[0].length).fill("0").join("");
-    unitsSold = parseInt(totalUnitsSold.toString().replace(allZero, "0"));
+    var unitsSold_ = totalUnitsSold.toString().replace(allZero, "");
+    if (unitsSold_.length === 1) {
+      unitsSold = parseInt(`${unitsSold_}0`);
+    }
   }
   return Math.ceil(unitsSold / 5) + 1;
 }
