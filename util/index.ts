@@ -12,7 +12,7 @@ export function getXAxis(totalUnitsSold: number): number {
   return Math.ceil(unitsSold / 5) + 1;
 }
 
-export function highestNumber(
+export function labelIncrement(
   fixedCost: number,
   totalRevenue: number,
   totalCost: number,
@@ -30,7 +30,7 @@ export function createLabels(
   const labels: number[] = [];
   for (var i = 0; i < getXAxis(totalUnitsSold); i++) {
     labels.push(
-      highestNumber(fixedCost, totalRevenue, totalCost, totalUnitsSold) * i
+      labelIncrement(fixedCost, totalRevenue, totalCost, totalUnitsSold) * i
     );
   }
   return labels;
