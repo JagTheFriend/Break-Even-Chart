@@ -14,22 +14,26 @@ export function getXAxis(totalUnitsSold: number): number {
   return Math.ceil(unitsSold / 5) + 1;
 }
 
-export function labelIncrement(
-  totalRevenue: number,
-  totalCost: number,
-  totalUnitsSold: number
-): number {
-  return Math.ceil(Math.max(totalRevenue, totalCost, totalUnitsSold) / 5);
+export function roundUpNumber(num: string): number {
+  const first2Numbers = num.slice(0, 2);
+  return parseFloat(
+    num.replace(first2Numbers, `${first2Numbers[0]}.${first2Numbers[1]}`)
+  );
 }
 
-export function createLabels(
-  totalRevenue: number,
-  totalCost: number,
-  totalUnitsSold: number
-): number[] {
+export function labelIncrement(totalUnitsSold: string): number {
+  return (
+    parseFloat(
+      Math.ceil(roundUpNumber(totalUnitsSold)) +
+        "0".repeat(totalUnitsSold.length - 1)
+    ) / 5
+  );
+}
+
+export function createLabels(totalUnitsSold: number): number[] {
   const labels: number[] = [];
   for (var i = 0; i < getXAxis(totalUnitsSold); i++) {
-    labels.push(labelIncrement(totalRevenue, totalCost, totalUnitsSold) * i);
+    labels.push(labelIncrement(totalUnitsSold.toString()) * i);
   }
   return labels;
 }
