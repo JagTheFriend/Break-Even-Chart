@@ -51,7 +51,7 @@ export default function BreakEvenGraph() {
         display: true,
         title: {
           display: true,
-          text: "Money",
+          text: "Funds",
           font: {
             size: 16,
           },
